@@ -1,0 +1,21 @@
+import pandas as pd
+
+df = pd.read_csv("./data/raw/Global_Superstore2.csv", encoding="latin1")
+
+# print(df.head(10))
+# print(df.shape)
+# print(df.info)
+# print(df.describe)
+# print(df.isnull().sum())
+# print(df.duplicated().sum())
+# print(df.dtypes)
+# print(df["Sales"].sum())
+# print(df["Customer Name"].nunique())
+print(df["Product Name"].nunique())
+# print(df["Order Date"].min())
+# print(df["Order Date"].max())
+# print(df["Order ID"].duplicated().sum())
+# print(len(df))
+# print(df.columns)
+# print(df["Customer ID"].nunique())
+print(df["Product ID"].nunique())
