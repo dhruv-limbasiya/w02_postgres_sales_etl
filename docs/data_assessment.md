@@ -39,6 +39,16 @@ Total Duplicate Rows: 0
 4. Handle missing values.
 5. Convert date columns to datetime datatype.
 
+## Date Validation
+
+Order Date and Ship Date were initially loaded as object datatype.
+
+After conversion to datetime:
+
+Ship Date >= Order Date for all 51,290 records.
+
+No date quality issues detected.
+
 ## Total revenue: 12642501.90988
 
 ## Unique Customers: 795
