@@ -5,3 +5,5 @@ from load import load
 raw_data = extract("./data/raw/Global_Superstore2.csv")
 clean_df = transform(raw_data)
 load(clean_df)
+
+print("ETL process completed successfully!")
