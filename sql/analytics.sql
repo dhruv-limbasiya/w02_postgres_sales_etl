@@ -1,5 +1,12 @@
 Query 1: Top 10 Customers by Revenue
 
+SELECT customer_name, SUM(f.sales) AS Revenue 
+FROM dim_customer c 
+LEFT JOIN fact_sales f 
+ON c.customer_id = f.customer_id 
+GROUP BY c.customer_name
+ORDER BY REvenue DESC limit 10;
+
 "Tom Ashbrook"	40488.07080000001
 "Tamara Chand"	37457.333000000006
 "Greg Tran"	35550.95427999999
@@ -14,6 +21,13 @@ Query 1: Top 10 Customers by Revenue
 
 Query 2: Revenue by Category
 
+SELECT DISTINCT category, SUM(f.sales) AS Revenue
+FROM dim_product p
+LEFT JOIN fact_sales f
+on p.product_id = f.product_id
+GROUP BY p.category
+ORDER BY Revenue DESC LIMIt 10;
+
 "Technology"	5177889.695180005
 "Furniture"	4502905.604099968
 "Office Supplies"	4172061.
@@ -21,13 +35,31 @@ Query 2: Revenue by Category
 
 Query 3: Profit by Category
 
-SELECT DISTINCT category, SUM(f.profit) AS profit 
+SELECT category, SUM(f.profit) AS profit 
 FROM dim_product p
 LEFT JOIN fact_sales f
 ON p.product_id = f.product_id
 GROUP BY p.category;
 
+"Furniture"	308376.6850000014
+"Office Supplies"	575902.6315999979
+"Technology"	723147.9276799978
+
 Query 4: Monthly Revenue Trend  
+
+SELECT dd.order_year,
+    dd.order_month,
+    SUM(f.sales) AS monthly_revenue
+FROM dim_date dd
+JOIN fact_sales f
+ON dd.order_date = f.order_date
+GROUP BY
+	dd.order_year,
+    dd.order_month
+ORDER BY
+    dd.order_year,
+    dd.order_month;
+
 2011	1	98898.48886000004
 2011	2	91152.15698
 2011	3	145729.36735999986
@@ -79,6 +111,14 @@ Query 4: Monthly Revenue Trend
 
 
 Query 5: Top 10 Products by Revenue
+
+SELECT product_name, SUM(f.sales) AS revenue
+FROM dim_product dp
+LEFT JOIN fact_sales f
+ON dp.product_id = f.product_id
+GROUP BY dp.product_name 
+ORDER BY revenue DESC
+LIMIT 10;
 
 "Apple Smart Phone, Full Size"	86935.7786
 "Cisco Smart Phone, Full Size"	76441.5306
